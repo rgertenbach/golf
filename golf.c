@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "golf.h"
 
 static uint8_t
@@ -323,6 +324,7 @@ GolfGame_new(size_t const players)
 void
 GolfRound_shuffle_deck(struct GolfRound * const round)
 {
+        memset(round->deck, 0, DECKSIZE * sizeof *round->deck);
 	while (round->discardsz) {
 		round->deck[(round->decksz)++] = round->discard[--(round->discardsz)];
 	}
@@ -353,6 +355,7 @@ GolfRound_init(
 	round->playersz = game->playersz;
 	round->decksz = 0;
 	round->whoseturn = (game->dealer + 1) % game->playersz;
+        round->discardsz = 0;
 
 	// Set up deck (via discard pile).
 	for (enum GolfFace face = GOLF_FACE_ACE; face <= GOLF_FACE_KING ; face++) {

@@ -54,7 +54,7 @@ print_options(golf_actions_t const actions, size_t const player)
         case GOLF_ACTION_DECK_BOT_LFT: printf(" - 16 Swap open bottom left\n"); break;
         case GOLF_ACTION_DECK_BOT_MID: printf(" - 17 Swap open bottom mid\n"); break;
         case GOLF_ACTION_DECK_BOT_RGT: printf(" - 18 Swap open bottom right\n"); break;
-        case GOLF_ACTION_FLIP_DECK: printf(" - 19 Flip the top card of the deck\n"); break;
+        case GOLF_ACTION_FLIP_DECK:   printf(" - 19 Flip the top card of the deck\n"); break;
       }
     }
     check <<= 1;
@@ -76,11 +76,11 @@ main(void)
         if (!available) { break; }
         print_board(&round);
         print_options(available, round.whoseturn);
-        printf("Action: ");
+        printf("Action: \n");
         scanf("%ud", &choice);
       }
       choice = GOLF_ACTION_NONE;
-      
+
 
       round.players[round.whoseturn] = golf_clear_hand(round.players[round.whoseturn]);
     }

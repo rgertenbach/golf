@@ -17,10 +17,12 @@ enum GolfFace {
   GOLF_FACE_EIGHT = 8,
   GOLF_FACE_NINE  = 9,
   GOLF_FACE_TEN   = 10,
-  GOLF_FACE_JACK  = 12,
-  GOLF_FACE_QUEEN = 13,
-  GOLF_FACE_KING  = 14, // 0b1110
+  GOLF_FACE_JACK  = 11,
+  GOLF_FACE_QUEEN = 12,
+  GOLF_FACE_KING  = 13, // 0b1101
 };
+
+#define DECKSIZE 104
 
 #define GOLF_REMOVED_CARD 0b10000LL
 
@@ -69,10 +71,10 @@ typedef uint64_t golfhand_t;
 
 struct GolfRound {
   // The deck.
-  golfcard_t deck[104];
+  golfcard_t deck[DECKSIZE];
   // How many cards are still in the deck.
   size_t decksz;
-  golfcard_t discard[104];
+  golfcard_t discard[DECKSIZE];
   size_t discardsz;
   // The currently open card.
   golfcard_t open;
